@@ -8,18 +8,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Views/ItemSelect.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Views/MainView.fxml"));
         primaryStage.setTitle("Price Watcher");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
-
-        Parent seed = FXMLLoader.load(getClass().getResource("Views/BasicView.fxml"));
-        Stage secondaryStage = new Stage();
-        secondaryStage.setTitle("Price Watcher");
-        secondaryStage.setScene(new Scene(seed));
-        secondaryStage.setResizable(false);
-        secondaryStage.show();
     }
 
 

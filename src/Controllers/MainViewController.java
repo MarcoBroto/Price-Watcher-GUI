@@ -1,28 +1,30 @@
 /**
- * ItemSelectViewController.java
+ * MainViewController.java
  * @author Marco Soto
  */
 
 package Controllers;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import Models.DropdownList;
+import Models.Item;
+import Models.PriceFinder;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import java.awt.Desktop;
+import javafx.stage.Stage;
+
+import java.awt.*;
 import java.net.URI;
 import java.net.URL;
 import java.util.HashMap;
-import Models.*;
 
-public class ItemSelectViewController {
+public class MainViewController {
 
     /* View Interface Elements */
     @FXML private Button refreshButton;
@@ -49,8 +51,10 @@ public class ItemSelectViewController {
      * Initialize view controller and its corresponding views.
      * Attaches event listeners to view controls and sets their initial values.
      */
-    public void initialize() {
+    public void initialize() throws Exception {
         System.out.println("Initializing");
+
+        //displayPopup(new Scene(FXMLLoader.load(getClass().getResource("../Views/BasicView.fxml"))));
 
         /* Set Resource Locations */
         URL soundURL = getClass().getResource("/assets/SiliconValley_bitcoinAlert.wav");
@@ -199,5 +203,12 @@ public class ItemSelectViewController {
         catch (Exception ex) {
             System.out.println(ex);
         }
+    }
+
+    private static void displayPopup(Scene scene) {
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 }
