@@ -32,6 +32,8 @@ public class Item {
 
     public String getItemURL() { return this.url; }
 
+    public void setItemName(String name) { this.name = name; }
+
     public void setItemURL(String url) { this.url = url; }
 
     /**

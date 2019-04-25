@@ -47,6 +47,10 @@ public class MainViewController {
     private PriceFinder finder = new PriceFinder(); // Price Finder that scrapes web and updates item prices
     private static MediaPlayer player; // Used to play sounds
 
+    /*  */
+    private Stage popupStage = new Stage();
+
+
     /**
      * Initialize view controller and its corresponding views.
      * Attaches event listeners to view controls and sets their initial values.
@@ -54,7 +58,11 @@ public class MainViewController {
     public void initialize() throws Exception {
         System.out.println("Initializing");
 
-        //displayPopup(new Scene(FXMLLoader.load(getClass().getResource("../Views/BasicView.fxml"))));
+        popupStage.setResizable(false);
+        Scene aboutPopupScene = new Scene(FXMLLoader.load(getClass().getResource("../Views/AboutView.fxml")));
+        Scene editPopupScene = new Scene(FXMLLoader.load(getClass().getResource("../Views/EditView.fxml")));
+        Scene searchPopupScene = new Scene(FXMLLoader.load(getClass().getResource("../Views/SearchView.fxml")));
+        displayPopup(editPopupScene);
 
         /* Set Resource Locations */
         URL soundURL = getClass().getResource("/assets/SiliconValley_bitcoinAlert.wav");
@@ -205,10 +213,10 @@ public class MainViewController {
         }
     }
 
-    private static void displayPopup(Scene scene) {
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+    private void displayPopup(Scene scene) {
+        popupStage.setScene(scene);
+        popupStage.show();
     }
+
+    private void dismissPopup() { popupStage.hide(); }
 }
